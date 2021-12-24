@@ -1,2 +1,2 @@
 # SQL-for-Data_Science
-In this repository we can find DBMS concepts and SQL Queries that helps us for good Data Analysis.
+In this repository we can find DBMS concepts and SQL Queries that helps us to do good Data Analysis.
