@@ -1,0 +1,93 @@
+=> Using ER-Diagram to design an efficient Data Model by Customers, Product and Customer_Address Entities. Attributes are given below with their respective    entities for  your reference.
+
+      Entity 1: Customer
+
+     Attributes: Email, Name, contact, zip_code, product id
+
+      Entity 2: Product
+
+     Attributes: Product_ID, Product_name, Price
+
+     Entity: Customer_Address
+
+     Attributes: Street_Address, CIty, Zip_Code, State
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Transform the previously designed  ER data model into RDBMS tabular structure along with its schema creation.
+
+
+	create table customer
+	(
+	email varchar(30) not null,
+	name varchar(30) not null,
+	contact varchar(15) unique,
+	prod_id int(10) not null REFERENCES product(product_id),
+	z_code int (10) not null  REFERENCES customer_address(zip_code),
+	PRIMARY KEY(email));
+
+
+	create table product
+	(
+	product_id int (10) not null,
+	product_name varchar(30) not null,
+	price float(10,2) not null,
+	PRIMARY KEY(product_id));
+
+
+
+	create table customer_address
+	(
+	zip_code int(10) not null,
+	street_address varchar(40),
+	city varchar(15),
+	state varchar(20),
+	PRIMARY KEY (zip_code));
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> please add one more column 'country' in 'Customer Address' tables.
+
+
+	ALTER TABLE customer_address ADD country varchar(30);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Insert atleast 3 values to each tables.
+
+	insert into product values(001, 'mobile', 10000);
+	insert into product values(002, 'TV', 50000);
+	insert into product values(003, 'Laptop', 70000);
+
+
+	insert into customer values('data.science@gmail.com', 'Avishek', '7003064710',001, 712235);
+
+	insert into customer_address values(712235, 'konnagar', 'kolkata', 'WB');
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+=> create a duplicate table of 'customer' table using SELECT statement.
+
+	CTRATE TABLE customer_bak SELECT * FROM customer;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Drop the column 'state' from 'Customer_Address' table.
+
+
+	ALTER TABLE customer_address DROP column state;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+=> Rename the table 'Customer_Address' to 'Address'.
+
+
+	ALTER TABLE customer_address RENAME TO cutomer;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
